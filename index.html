@@ -41,6 +41,21 @@
     </div>
     <div class="box">Sadržaj 4</div>
   </div>
-  <script src="script.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAEFIiFgzm6R19gd0TRVnlObSsSzbCtXqc",
+            authDomain: "ac-megatrade-membership-app.firebaseapp.com",
+            projectId: "ac-megatrade-membership-app",
+            storageBucket: "ac-megatrade-membership-app.appspot.com",
+            messagingSenderId: "212750214973",
+            appId: "1:212750214973:web:395c1b481c5828f67bc754"
+        };
+        firebase.initializeApp(firebaseConfig);
+        let db = firebase.firestore();
+    </script>
+<script src="script.js"></script>
 </body>
 </html>

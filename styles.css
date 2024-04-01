@@ -1,0 +1,68 @@
+*{
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body, html {
+margin: 0;
+padding: 0;
+height: 100%;
+}
+.container {
+display: flex;
+flex-wrap: wrap;
+height: 100%;
+}
+.box {
+flex: 0 0 50%;
+height: 50%;
+display: block;
+align-items: center;
+justify-content: center;
+border: 1px solid #000;
+box-sizing: border-box;
+
+} 
+.box {
+text-align: center;
+justify-content: center;
+}
+
+#input-jmbg{
+width: 250px;
+}
+#iip{
+width: 180px;
+}
+
+#reg{
+width:189px
+}
+
+input[type=button]{
+font-size: 35px;
+}
+
+#input-for-code{
+width: 150px;
+}
+
+#divforlabelanddiv{
+display: flex;
+}
+
+#forlabel, #forinput{
+width: 49%;
+}
+#forinput{
+padding-top: 20px;
+}
+#input-reg-new-customer{
+    width: 200px;
+}
+#forlabel{
+    text-align: right;
+}
+
+#input-for-check{
+    width: 200px;
+}

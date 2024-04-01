@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AC MegaTrade</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AC Mega Trade</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
-    <script src="script.js"></script>
+  <div class="container">
+    <div class="box">
+        <h1>Unesi novog klijenta</h1>
+        <form action="" id="new-client"></form>
+            <label for="jmbg">JMBG: <input type="number" min="13" max="13" id="input-jmbg" ></label> <br> <br>
+            <label for="iip">IME I PREZIME: <input type="text" id="iip" ></label> <br> <br>
+            <label for="reg">REG OZNAKA: <input type="text" id="reg" ></label> <br> <br>
+            <input type="button" value="KREIRAJ VAUČER" id="create-button">
+        </form>  
+    </div>
+    <div class="box">
+        <h1>Unesi kod sa vaučera</h1>
+        <form action="" id="input-code">
+            <label for="input-for-code">KOD: <input type="number" min="4" id="input-for-code"></label> <br> <br>
+            <div id="divforlabelanddiv">
+                <div id="forlabel">
+                    <label for="input-reg-new-customer">REG.OZNAKA VOZILA KOJE KORISTI OVAJ VAUČER:</label>
+                </div>
+                <div id="forinput">
+                    <input type="text" id="input-reg-new-customer">
+                </div>
+            </div> <br> <br>
+            <input type="button" value="DODELI POPUST" id="add-popust-button">
+        </form>
+    </div>
+    <div class="box">
+        <h1>Proveri popust za stranku</h1>
+        <form action="">
+            <label for="">UNESI JMBG: <input type="number" min="4" id="input-for-check"></label> <br> <br>
+            <input type="button" value="PROVERI POPUST" >
+        </form>
+    </div>
+    <div class="box">Sadržaj 4</div>
+  </div>
 </body>
 </html>

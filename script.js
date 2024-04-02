@@ -121,7 +121,7 @@ buttonForCheckClientPopust.addEventListener('click', () => {
             return;
         }
         Snapshot.forEach(doc =>{
-            console.log(doc);
+            console.log(doc.data().njegoveStranke.popust);
         })
     })
 })

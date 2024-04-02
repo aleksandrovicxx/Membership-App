@@ -14,12 +14,11 @@
             <label for="jmbg">JMBG: <input type="number" min="13" max="13" id="input-jmbg" ></label> <br> <br>
             <label for="iip">IME I PREZIME: <input type="text" id="iip" ></label> <br> <br>
             <label for="reg">REG OZNAKA: <input type="text" id="reg" ></label> <br> <br>
-            <label for="location"> TEHNICKI PREGLED U: 
-                <select name="loc" id="location">
-                    <option value="0">LOKACIJA</option>
-                    <option value="Presevo">PRESEVO</option>
-                    <option value="Bujanovac">BUJANOVAC</option>
-                </select>
+            <label for="location"> TEHNICKI PREGLED U: <br>
+                <input type="radio" name="location" id="PRESEVO" value="Presevo" checked>
+                <label for="PRESEVO">PRESEVO</label>
+                <input type="radio" name="location" id="BUJANOVAC" value="Bujanovac">
+                <label for="BUJANOVAC">BUJANOVAC</label>
             </label> <br> <br>
             <input type="button" value="KREIRAJ VAUČER" id="create-vaucher-button">
         </form>  
@@ -42,7 +41,7 @@
     <div class="box">
         <h1>Proveri popust za stranku</h1> <br>
         <form action="">
-            <label for="">UNESI JMBG: <input type="number" min="4" id="input-for-check"></label> <br> <br> <br>
+            <label for="">UNESI JMBG: <input type="number" min="13" id="input-for-check"></label> <br> <br> <br>
             <input type="button" value="PROVERI POPUST" >
         </form>
     </div>

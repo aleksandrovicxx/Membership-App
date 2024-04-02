@@ -1,0 +1,8 @@
+const firebaseConfig = {
+    apiKey: "AIzaSyAEFIiFgzm6R19gd0TRVnlObSsSzbCtXqc",
+    authDomain: "ac-megatrade-membership-app.firebaseapp.com",
+    projectId: "ac-megatrade-membership-app",
+    storageBucket: "ac-megatrade-membership-app.appspot.com",
+    messagingSenderId: "212750214973",
+    appId: "1:212750214973:web:395c1b481c5828f67bc754"
+  };

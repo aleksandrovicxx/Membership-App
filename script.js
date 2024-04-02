@@ -6,12 +6,15 @@ let selectElement = document.getElementById('location')
 let box4 = document.getElementById('box4')
 let presevo = db.collection('Presevo')
 let elementForPrintVaucher = document.createElement('div')
+let buttonForAddPopust = document.getElementById('add-popust-button')
 
 
 
 
-// Create SET
 buttonForCreateVaucher.addEventListener('click', ()=>{
+
+    let location = document.querySelector("input[name='location']:checked").value
+
     uniqueCodeFunc = () => {
        let date = new Date()
        let day = date.getDay()
@@ -33,32 +36,79 @@ buttonForCreateVaucher.addEventListener('click', ()=>{
     } else if (regInput.value.length <7){
         divMsg.innerHTML = 'PROVERI REG.OZNAKU'
     } else {
-        let selectedLocation = selectElement.options[selectElement.selectedIndex];
         let cust = {
             jmbg: jmbgInput.value,
             imeIPrezime: imeIPrezimeInput.value,
             regOznaka: regInput.value,
-            lokacija: selectedLocation.value,
+            lokacija: location,
             jedinstveniKod: uniqueCode,
             njegoveStranke: {
-                regOznakaStranke: {},
+                regOznakaStranke: [],
+                popust: 0,
             }
         }
         
-        db.collection(`${selectedLocation.value}`).doc(`${cust.jmbg}`)
+        db.collection(`klijenti`).doc(`${cust.jmbg}`)
         .set(cust)
         .then(() => {
-            divMsg.innerHTML = `${imeIPrezimeInput.value} uspesno dodat u bazu`
+            divMsg.innerHTML = `${imeIPrezimeInput.value} dobio kod: ${uniqueCode} i smesten u bazu ${location}`
             jmbgInput.value = ''
             imeIPrezimeInput.value = ''
             regInput.value = ''
-            selectedLocation.value = ''
         })
         .catch((e)=>{
             console.log(`Desila se greska ${e}`);
         })
     }
 })
+
+buttonForAddPopust.addEventListener('click', () => {
+    let unetKod = document.getElementById('input-for-code').value;
+    let novaRegOznaka = document.getElementById('input-reg-new-customer').value;
+    let divMsg = document.createElement('div');
+    
+    db.collection('klijenti')
+    .where('jedinstveniKod', '==', unetKod)
+    .get()
+    .then(Snapshot => {
+        if (Snapshot.empty) {
+            divMsg.innerHTML = 'Kod ne postoji u bazi.';
+            box4.appendChild(divMsg);
+            return;
+        }
+
+        Snapshot.forEach(doc => {
+            let popust = doc.data().njegoveStranke.popust || 0;
+            let noviPopust = popust + 1;//<----OVDE DODAJEMO DODATNI POPUST UKOLIKO TREBA
+            let regOznake = doc.data().njegoveStranke.regOznakaStranke || [];
+            regOznake.push(novaRegOznaka);
+            
+            db.collection('klijenti')
+            .doc(doc.id)
+            .update({
+                'njegoveStranke.popust': noviPopust,
+                'njegoveStranke.regOznakaStranke': regOznake
+            })
+            .then(() => {
+                divMsg.innerHTML = `USPESNO DODELJEN POPUST! <b><i>NAPRED MEGA TRADE!</b></i>.`;
+                box4.appendChild(divMsg);
+            })
+            .catch(error => {
+                console.error('Greška prilikom ažuriranja dokumenta:', error);
+            });
+        });
+    })
+    .catch(error => {
+        divMsg.innerHTML = `Greška prilikom pretrage dokumenata: ${error}`;
+        box4.appendChild(divMsg);
+        console.log('ne');
+    });
+});
+
+
+
+
+
 
     
 

@@ -121,7 +121,9 @@ buttonForCheckClientPopust.addEventListener('click', () => {
             return;
         }
         Snapshot.forEach(doc =>{
-            console.log(doc.data().njegoveStranke.popust);
+            let njegovPopust = (doc.data().njegoveStranke.popust);
+            divMsg = innerHTML.njegovPopust
+            box4.appendChild(divMsg)
         })
     })
 })

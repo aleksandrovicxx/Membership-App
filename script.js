@@ -122,7 +122,7 @@ buttonForCheckClientPopust.addEventListener('click', () => {
         }
         Snapshot.forEach(doc =>{
             let njegovPopust = (doc.data().njegoveStranke.popust);
-            divMsg = innerHTML = njegovPopust
+            divMsg.innerHTML = njegovPopust
             box4.appendChild(divMsg)
         })
     })

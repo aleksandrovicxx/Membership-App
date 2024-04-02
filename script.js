@@ -124,7 +124,7 @@ buttonForCheckClientPopust.addEventListener('click', () => {
             console.log(doc);
         })
     })
-
+})
 
 
 

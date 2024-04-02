@@ -123,7 +123,7 @@ buttonForCheckClientPopust.addEventListener('click', () => {
         }
         Snapshot.forEach(doc =>{
             let njegovPopust = (doc.data().njegoveStranke.popust);
-            divMsg.innerHTML = njegovPopust
+            divMsg.innerHTML = `Popust koji je ostvario ${doc.data().imeIPrezime} je ${njegovPopust}`
             box4.appendChild(divMsg)
         })
     })

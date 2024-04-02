@@ -9,27 +9,23 @@ let elementForPrintVaucher = document.createElement('div')
 let buttonForAddPopust = document.getElementById('add-popust-button')
 let buttonForCheckClientPopust = document.getElementById('check-client-popust')
 
-buttonForCheckClientPopust.addEventListener('click', () => {
-    buttonForCheckClientPopust.style.backgroundColor = 'red'
-})
-
 
 
 
 buttonForCreateVaucher.addEventListener('click', ()=>{
-
+    
     let location = document.querySelector("input[name='location']:checked").value
-
+    
     uniqueCodeFunc = () => {
-       let date = new Date()
-       let day = date.getDay()
-       let month = date.getMonth()+1
-       let year = date.getFullYear()
-       let hours = date.getHours()
-       let minutes = date.getMinutes()
-       let milisekundes = date.getMilliseconds()
-       
-       return `${day}${month}${year}${hours}${minutes}${milisekundes}`;    
+        let date = new Date()
+        let day = date.getDay()
+        let month = date.getMonth()+1
+        let year = date.getFullYear()
+        let hours = date.getHours()
+        let minutes = date.getMinutes()
+        let milisekundes = date.getMilliseconds()
+        
+        return `${day}${month}${year}${hours}${minutes}${milisekundes}`;    
     }
     let divMsg = document.createElement('div')
     box4.appendChild(divMsg)
@@ -81,7 +77,7 @@ buttonForAddPopust.addEventListener('click', () => {
             box4.appendChild(divMsg);
             return;
         }
-
+        
         Snapshot.forEach(doc => {
             let popust = doc.data().njegoveStranke.popust || 0;
             let noviPopust = popust + 1;//<----OVDE DODAJEMO DODATNI POPUST UKOLIKO TREBA
@@ -113,11 +109,27 @@ buttonForAddPopust.addEventListener('click', () => {
 });
 
 
+buttonForCheckClientPopust.addEventListener('click', () => {
+    let inputForCheck = document.getElementById('input-for-check').value
+    db.collection('klijenti')
+    .where('jmbg', '==', inputForCheck)
+    .get()
+    .then(Snapshot =>{
+        if (Snapshot.empty) {
+            divMsg.innerHTML = 'Ne postoji klijent sa tim JMBG';
+            box4.appendChild(divMsg);
+            return;
+        }
+        Snapshot.forEach(doc =>{
+            console.log(doc);
+        })
+    })
 
 
 
 
-    
+
+
 
 
 

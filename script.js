@@ -7,6 +7,11 @@ let box4 = document.getElementById('box4')
 let presevo = db.collection('Presevo')
 let elementForPrintVaucher = document.createElement('div')
 let buttonForAddPopust = document.getElementById('add-popust-button')
+let buttonForCheckClientPopust = document.getElementById('check-client-popust')
+
+buttonForAddPopust.addEventListener('click', () => {
+    buttonForAddPopust.style.backgroundColor = 'red'
+})
 
 
 

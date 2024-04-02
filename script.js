@@ -110,6 +110,7 @@ buttonForAddPopust.addEventListener('click', () => {
 
 
 buttonForCheckClientPopust.addEventListener('click', () => {
+    let divMsg = document.createElement('div');
     let inputForCheck = document.getElementById('input-for-check').value
     db.collection('klijenti')
     .where('jmbg', '==', inputForCheck)

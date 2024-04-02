@@ -92,8 +92,8 @@ buttonForAddPopust.addEventListener('click', () => {
             .then(() => {
                 divMsg.innerHTML = `USPESNO DODELJEN POPUST! <b><i>NAPRED MEGA TRADE!</b></i>.`;
                 box4.appendChild(divMsg);
-                unetKod=''
-                novaRegOznaka=''
+                document.getElementById('input-for-code').value = '';
+                document.getElementById('input-reg-new-customer').value = '';
             })
             .catch(error => {
                 console.error('Greška prilikom ažuriranja dokumenta:', error);

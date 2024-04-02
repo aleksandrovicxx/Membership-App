@@ -33,9 +33,9 @@ buttonForCreateVaucher.addEventListener('click', ()=>{
     
     if(jmbgInput.value.length!=13){
         console.log('da');
-        divMsg.innerHTML = 'PROVERI JMBG'
+        divMsg.innerHTML += 'PROVERI JMBG'
     } else if (regInput.value.length <7){
-        divMsg.innerHTML = 'PROVERI REG.OZNAKU'
+        divMsg.innerHTML += 'PROVERI REG.OZNAKU'
     } else {
         let cust = {
             jmbg: jmbgInput.value,
@@ -52,7 +52,7 @@ buttonForCreateVaucher.addEventListener('click', ()=>{
         db.collection(`klijenti`).doc(`${cust.jmbg}`)
         .set(cust)
         .then(() => {
-            divMsg.innerHTML = `${imeIPrezimeInput.value} dobio kod: ${uniqueCode} i smesten u bazu ${location}`
+            divMsg.innerHTML += `${imeIPrezimeInput.value} dobio kod: ${uniqueCode} i smesten u bazu ${location}`
             jmbgInput.value = ''
             imeIPrezimeInput.value = ''
             regInput.value = ''
@@ -73,7 +73,7 @@ buttonForAddPopust.addEventListener('click', () => {
     .get()
     .then(Snapshot => {
         if (Snapshot.empty) {
-            divMsg.innerHTML = 'Kod ne postoji u bazi.';
+            divMsg.innerHTML += 'Kod ne postoji u bazi.';
             box4.appendChild(divMsg);
             return;
         }
@@ -91,7 +91,7 @@ buttonForAddPopust.addEventListener('click', () => {
                 'njegoveStranke.regOznakaStranke': regOznake
             })
             .then(() => {
-                divMsg.innerHTML = `USPESNO DODELJEN POPUST! <b><i>NAPRED MEGA TRADE!</b></i>.`;
+                divMsg.innerHTML += `USPESNO DODELJEN POPUST! <b><i>NAPRED MEGA TRADE!</b></i>.`;
                 box4.appendChild(divMsg);
                 document.getElementById('input-for-code').value = '';
                 document.getElementById('input-reg-new-customer').value = '';
@@ -102,7 +102,7 @@ buttonForAddPopust.addEventListener('click', () => {
         });
     })
     .catch(error => {
-        divMsg.innerHTML = `Greška prilikom pretrage dokumenata: ${error}`;
+        divMsg.innerHTML += `Greška prilikom pretrage dokumenata: ${error}`;
         box4.appendChild(divMsg);
         console.log('ne');
     });
@@ -117,13 +117,13 @@ buttonForCheckClientPopust.addEventListener('click', () => {
     .get()
     .then(Snapshot =>{
         if (Snapshot.empty) {
-            divMsg.innerHTML = 'Ne postoji klijent sa tim JMBG';
+            divMsg.innerHTML += 'Ne postoji klijent sa tim JMBG';
             box4.appendChild(divMsg);
             return;
         }
         Snapshot.forEach(doc =>{
             let njegovPopust = (doc.data().njegoveStranke.popust);
-            divMsg.innerHTML = `Popust koji je ostvario ${doc.data().imeIPrezime} je ${njegovPopust} <br> Popust je dobio od`
+            divMsg.innerHTML += `Popust koji je ostvario ${doc.data().imeIPrezime} je ${njegovPopust} <br> Popust je dobio od: ${doc.data().njegoveStranke.regOznakaStranke}`
             box4.appendChild(divMsg)
         })
     })

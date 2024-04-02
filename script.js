@@ -9,8 +9,8 @@ let elementForPrintVaucher = document.createElement('div')
 let buttonForAddPopust = document.getElementById('add-popust-button')
 let buttonForCheckClientPopust = document.getElementById('check-client-popust')
 
-buttonForAddPopust.addEventListener('click', () => {
-    buttonForAddPopust.style.backgroundColor = 'red'
+buttonForCheckClientPopust.addEventListener('click', () => {
+    buttonForCheckClientPopust.style.backgroundColor = 'red'
 })
 
 

@@ -24,19 +24,48 @@ buttonForCreateVaucher.addEventListener('click', ()=>{
         let hours = date.getHours()
         let minutes = date.getMinutes()
         let milisekundes = date.getMilliseconds()
-        
+
         return `${day}${month}${year}${hours}${minutes}${milisekundes}`;    
     }
-    let divMsg = document.createElement('div')
-    box4.appendChild(divMsg)
     let uniqueCode = uniqueCodeFunc()
     
     if(jmbgInput.value.length!=13){
         console.log('da');
-        divMsg.innerHTML += 'PROVERI JMBG'
+        alert('PROVERI JMBG')
     } else if (regInput.value.length <7){
-        divMsg.innerHTML += 'PROVERI REG.OZNAKU'
+        alert('PROVERI REG.OZNAKU')
     } else {
+        let printContent = document.getElementById('print-content');
+        printContent.innerHTML = ''; 
+    
+        for (let i = 0; i < 10; i++) {
+            let div = document.createElement('div');
+            div.classList.add('voucher');
+            
+            let img = document.createElement('img');
+            img.src = 'media/logobaner.png';
+            img.classList.add('slikavaucer')
+            div.appendChild(img);
+            
+            let h4 = document.createElement('h4');
+            h4.textContent = 'VAUCER ZA: ';
+            div.appendChild(h4);
+            
+            let h2 = document.createElement('h2');
+            h2.textContent = imeIPrezimeInput.value;
+            div.appendChild(h2);
+            
+            let p = document.createElement('p');
+            p.textContent = uniqueCode;
+            div.appendChild(p);
+            
+            printContent.appendChild(div);
+        }
+    
+        printContent.classList.remove('hidden-print');
+        window.print();
+        printContent.classList.add('hidden-print');        
+
         let cust = {
             jmbg: jmbgInput.value,
             imeIPrezime: imeIPrezimeInput.value,
@@ -52,10 +81,11 @@ buttonForCreateVaucher.addEventListener('click', ()=>{
         db.collection(`klijenti`).doc(`${cust.jmbg}`)
         .set(cust)
         .then(() => {
-            divMsg.innerHTML += `${imeIPrezimeInput.value} dobio kod: ${uniqueCode} i smesten u bazu ${location}`
+            alert(`${imeIPrezimeInput.value} dobio kod: ${uniqueCode} i smesten u bazu ${location}`) 
             jmbgInput.value = ''
             imeIPrezimeInput.value = ''
             regInput.value = ''
+            
         })
         .catch((e)=>{
             console.log(`Desila se greska ${e}`);
@@ -73,7 +103,7 @@ buttonForAddPopust.addEventListener('click', () => {
     .get()
     .then(Snapshot => {
         if (Snapshot.empty) {
-            divMsg.innerHTML += 'Kod ne postoji u bazi.';
+            alert('Kod ne postoji u bazi.');
             box4.appendChild(divMsg);
             return;
         }
@@ -91,7 +121,7 @@ buttonForAddPopust.addEventListener('click', () => {
                 'njegoveStranke.regOznakaStranke': regOznake
             })
             .then(() => {
-                divMsg.innerHTML += `USPESNO DODELJEN POPUST! <b><i>NAPRED MEGA TRADE!</b></i>.`;
+                alert(`USPESNO DODELJEN POPUST! NAPRED MEGA TRADE!`);
                 box4.appendChild(divMsg);
                 document.getElementById('input-for-code').value = '';
                 document.getElementById('input-reg-new-customer').value = '';
@@ -102,7 +132,7 @@ buttonForAddPopust.addEventListener('click', () => {
         });
     })
     .catch(error => {
-        divMsg.innerHTML += `Greška prilikom pretrage dokumenata: ${error}`;
+        alert(`Greška prilikom pretrage dokumenata: ${error}`);
         box4.appendChild(divMsg);
         console.log('ne');
     });
@@ -111,44 +141,28 @@ buttonForAddPopust.addEventListener('click', () => {
 
 buttonForCheckClientPopust.addEventListener('click', () => {
     let divMsg = document.createElement('div');
+    let ximg = document.createElement('img')
+    ximg.classList.add('x')
+    ximg.src = 'media/x.png'
     let inputForCheck = document.getElementById('input-for-check').value
     db.collection('klijenti')
     .where('jmbg', '==', inputForCheck)
     .get()
     .then(Snapshot =>{
         if (Snapshot.empty) {
-            divMsg.innerHTML += 'Ne postoji klijent sa tim JMBG';
+            alert('Ne postoji klijent sa tim JMBG');
             box4.appendChild(divMsg);
             return;
         }
         Snapshot.forEach(doc =>{
             let njegovPopust = (doc.data().njegoveStranke.popust);
-            divMsg.innerHTML += `Popust koji je ostvario ${doc.data().imeIPrezime} je ${njegovPopust} <br> Popust je dobio od: ${doc.data().njegoveStranke.regOznakaStranke}`
+            divMsg.innerHTML = `Popust koji je ostvario ${doc.data().imeIPrezime} je <b>${njegovPopust}%</b> <br> Popust je dobio od: ${doc.data().njegoveStranke.regOznakaStranke}`
+            divMsg.appendChild(ximg)
             box4.appendChild(divMsg)
+            divMsg.addEventListener('click', () =>{
+                divMsg.remove()
+            })
+            document.getElementById('input-for-check').value = ''
         })
     })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*                    ___
-doc.set -> create        |
-doc.get -> read           \ _ Vracaju nam promise.
-doc.update -> update      /   Nakon ovih poziva 
-doc.delete -> delete  ___|    lancaju se .then() i .catch()
-*/

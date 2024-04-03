@@ -35,37 +35,7 @@ buttonForCreateVaucher.addEventListener('click', ()=>{
     } else if (regInput.value.length <7){
         alert('PROVERI REG.OZNAKU')
     } else {
-        let printContent = document.getElementById('print-content');
-        printContent.innerHTML = ''; 
-    
-        for (let i = 0; i < 10; i++) {
-            let div = document.createElement('div');
-            div.classList.add('voucher');
-            
-            let img = document.createElement('img');
-            img.src = 'media/logobaner.png';
-            img.classList.add('slikavaucer')
-            div.appendChild(img);
-            
-            let h4 = document.createElement('h4');
-            h4.textContent = 'VAUCER ZA: ';
-            div.appendChild(h4);
-            
-            let h2 = document.createElement('h2');
-            h2.textContent = imeIPrezimeInput.value;
-            div.appendChild(h2);
-            
-            let p = document.createElement('p');
-            p.textContent = uniqueCode;
-            div.appendChild(p);
-            
-            printContent.appendChild(div);
-        }
-    
-        printContent.classList.remove('hidden-print');
-        window.print();
-        printContent.classList.add('hidden-print');        
-
+        
         let cust = {
             jmbg: jmbgInput.value,
             imeIPrezime: imeIPrezimeInput.value,
@@ -166,3 +136,27 @@ buttonForCheckClientPopust.addEventListener('click', () => {
         })
     })
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*                    ___
+doc.set -> create        |
+doc.get -> read           \ _ Vracaju nam promise.
+doc.update -> update      /   Nakon ovih poziva 
+doc.delete -> delete  ___|    lancaju se .then() i .catch()
+*/

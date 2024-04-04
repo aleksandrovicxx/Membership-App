@@ -30,11 +30,15 @@ buttonForCreateVaucher.addEventListener('click', ()=>{
     let uniqueCode = uniqueCodeFunc()
     
     if(jmbgInput.value.length!=13){
-        console.log('da');
         alert('PROVERI JMBG')
     } else if (regInput.value.length <7){
         alert('PROVERI REG.OZNAKU')
     } else {
+
+        var printWindow = window.open(`printPage.html?imeIPrezime=${imeIPrezimeInput.value}&uniqueCode=${uniqueCode}`)
+        printWindow.onload = function () {
+            printWindow.print(  )
+        }
         
         let cust = {
             jmbg: jmbgInput.value,

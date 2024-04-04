@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Divovi sa slikama i tekstom</title>
+  <title>MIŠA CAR</title>
   <link rel="stylesheet" href="printPage.css">
 </head>
 <body>
@@ -12,18 +12,8 @@
       <img src="media/logobaner.png" alt="logo" class="img-logo">
     </div>
     <div class="box2">
-        <h2>Milosa Aleksandrovica</h2>
-        <p>2312321321434</p>
-    </div>
-</div>
-<span>
-<div class="container">
-    <div class="box1">
-      <img src="media/logobaner.png" alt="logo" class="img-logo">
-    </div>
-    <div class="box2">
-        <h2>Milosa Aleksandrovica</h2>
-        <p>2312321321434</p>
+        <h2 class="imeIPrezimeOutput"></h2>
+        <p class="jedKod"></p>
     </div>
 </div>
 <div class="container">
@@ -31,8 +21,8 @@
       <img src="media/logobaner.png" alt="logo" class="img-logo">
     </div>
     <div class="box2">
-        <h2>Milos Aleksandrovic</h2>
-        <p>2312321321434</p>
+        <h2 class="imeIPrezimeOutput"></h2>
+        <p class="jedKod"></p>
     </div>
 </div>
 <div class="container">
@@ -40,8 +30,8 @@
       <img src="media/logobaner.png" alt="logo" class="img-logo">
     </div>
     <div class="box2">
-        <h2>Milosa Aleksandrovica</h2>
-        <p>2312321321434</p>
+        <h2 class="imeIPrezimeOutput"></h2>
+        <p class="jedKod"></p>
     </div>
 </div>
 <div class="container">
@@ -49,8 +39,8 @@
       <img src="media/logobaner.png" alt="logo" class="img-logo">
     </div>
     <div class="box2">
-        <h2>Milosa Aleksandrovica</h2>
-        <p>2312321321434</p>
+        <h2 class="imeIPrezimeOutput"></h2>
+        <p class="jedKod"></p>
     </div>
 </div>
 <div class="container">
@@ -58,8 +48,8 @@
       <img src="media/logobaner.png" alt="logo" class="img-logo">
     </div>
     <div class="box2">
-        <h2>Milosa Aleksandrovica</h2>
-        <p>2312321321434</p>
+        <h2 class="imeIPrezimeOutput"></h2>
+        <p class="jedKod"></p>
     </div>
 </div>
 <div class="container">
@@ -67,8 +57,8 @@
       <img src="media/logobaner.png" alt="logo" class="img-logo">
     </div>
     <div class="box2">
-        <h2>Milosa Aleksandrovica</h2>
-        <p>2312321321434</p>
+        <h2 class="imeIPrezimeOutput"></h2>
+        <p class="jedKod"></p>
     </div>
 </div>
 <div class="container">
@@ -76,8 +66,8 @@
       <img src="media/logobaner.png" alt="logo" class="img-logo">
     </div>
     <div class="box2">
-        <h2>Milosa Aleksandrovica</h2>
-        <p>2312321321434</p>
+        <h2 class="imeIPrezimeOutput"></h2>
+        <p class="jedKod"></p>
     </div>
 </div>
 <div class="container">
@@ -85,8 +75,8 @@
       <img src="media/logobaner.png" alt="logo" class="img-logo">
     </div>
     <div class="box2">
-        <h2>Milosa Aleksandrovica</h2>
-        <p>2312321321434</p>
+        <h2 class="imeIPrezimeOutput"></h2>
+        <p class="jedKod"></p>
     </div>
 </div>
 <div class="container">
@@ -94,9 +84,37 @@
       <img src="media/logobaner.png" alt="logo" class="img-logo">
     </div>
     <div class="box2">
-        <h2>Milosa Aleksandrovica</h2>
-        <p>2312321321434</p>
+        <h2 class="imeIPrezimeOutput"></h2>
+        <p class="jedKod"></p>
     </div>
 </div>
+<div class="container">
+    <div class="box1">
+      <img src="media/logobaner.png" alt="logo" class="img-logo">
+    </div>
+    <div class="box2">
+        <h2 class="imeIPrezimeOutput"></h2>
+        <p class="jedKod"></p>
+    </div>
+</div>
+<script>
+  let urlParams = new URLSearchParams(window.location.search);
+let imeIPrezime = urlParams.get('imeIPrezime');
+let jedinstveniKod = urlParams.get('uniqueCode');
+
+// Pronalazimo sve elemente sa klasom "imeIPrezimeOutput"
+let imeIPrezimeElements = document.querySelectorAll('.imeIPrezimeOutput');
+imeIPrezimeElements.forEach(element => {
+    element.textContent = imeIPrezime; // Postavljamo sadržaj na svakom elementu
+});
+
+// Pronalazimo sve elemente sa klasom "jedKod"
+let jedinstveniKodElements = document.querySelectorAll('.jedKod');
+jedinstveniKodElements.forEach(element => {
+    element.textContent = jedinstveniKod; // Postavljamo sadržaj na svakom elementu
+});
+
+
+</script>
 </body>
 </html>

@@ -25,6 +25,7 @@ buttonForCreateVaucher.addEventListener('click', ()=>{
         let minutes = date.getMinutes()
         let milisekundes = date.getMilliseconds()
 
+        console.log(`${day}`);
         return `${day}${month}${year}${hours}${minutes}${milisekundes}`;    
     }
     let uniqueCode = uniqueCodeFunc()

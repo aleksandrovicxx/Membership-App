@@ -8,6 +8,9 @@
         justify-content: right;
         height: 100px;
     }
+    .main-div{
+        padding: 10px;
+    }
     .box3 {
         font-size: 12px;
         width: 25%;

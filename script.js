@@ -18,14 +18,12 @@ buttonForCreateVaucher.addEventListener('click', ()=>{
     
     uniqueCodeFunc = () => {
         let date = new Date()
-        let day = date.getDay()
+        let day = date.getDate()
         let month = date.getMonth()+1
         let year = date.getFullYear()
         let hours = date.getHours()
         let minutes = date.getMinutes()
         let milisekundes = date.getMilliseconds()
-
-        console.log(`${day}`);
         return `${day}${month}${year}${hours}${minutes}${milisekundes}`;    
     }
     let uniqueCode = uniqueCodeFunc()

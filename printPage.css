@@ -7,8 +7,13 @@
         justify-content: space-between;
         height: 100px;
     }
+    .box3 {
+        width: 33%;
+        height: 100%;
+        text-align: left;
+    }
     .box1 {
-        width: 59%;
+        width: 33%;
         height: 100%;
         text-align: left;
     }
@@ -17,7 +22,7 @@
         height: 100%;
     }
     .box2{
-        width: 39%;
+        width: 33%;
         text-align: right;
     }
     .img-logo{

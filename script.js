@@ -139,13 +139,3 @@ buttonForCheckClientPopust.addEventListener('click', () => {
         })
     })
 })
-
-
-
-
-
-
-
-
-
-

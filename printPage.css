@@ -8,6 +8,9 @@
         justify-content: right;
         height: 100px;
     }
+    .imeIPrezimeOutput{
+        margin-bottom: -18px;
+    }
     .main-div{
         padding: 10px;
     }

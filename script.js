@@ -153,13 +153,3 @@ buttonForCheckClientPopust.addEventListener('click', () => {
 
 
 
-
-
-
-
-/*                    ___
-doc.set -> create        |
-doc.get -> read           \ _ Vracaju nam promise.
-doc.update -> update      /   Nakon ovih poziva 
-doc.delete -> delete  ___|    lancaju se .then() i .catch()
-*/

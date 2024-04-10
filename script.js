@@ -8,7 +8,7 @@ let presevo = db.collection('Presevo')
 let elementForPrintVaucher = document.createElement('div')
 let buttonForAddPopust = document.getElementById('add-popust-button')
 let buttonForCheckClientPopust = document.getElementById('check-client-popust')
-
+let iznosPopusta = 1//<----OVDE DODAJEMO DODATNI POPUST UKOLIKO TREBA
 
 
 
@@ -83,7 +83,7 @@ buttonForAddPopust.addEventListener('click', () => {
         
         Snapshot.forEach(doc => {
             let popust = doc.data().njegoveStranke.popust || 0;
-            let noviPopust = popust + 1;//<----OVDE DODAJEMO DODATNI POPUST UKOLIKO TREBA
+            let noviPopust = popust + iznosPopusta;
             let regOznake = doc.data().njegoveStranke.regOznakaStranke || [];
             regOznake.push(novaRegOznaka);
             
